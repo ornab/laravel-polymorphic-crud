@@ -1,2 +1,2 @@
 # laravel-hasmanythrough-crud
-Laravel CRUD applicaiton with hasManyThrough relationship
+Laravel CRUD applicaiton with Polymorphic & hasManyThrough relationships
