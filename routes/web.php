@@ -27,7 +27,7 @@ Route::get('/create', function(){
    $staff = Staff::findOrFail(1);
     
     
-    $staff->photos()->create(['path' => 'example.jpg']);
+    $staff->photos()->create(['path' => 'anotherexample.jpg']);
     
     
 });
@@ -74,9 +74,39 @@ Route::get('/delete', function(){
     }
     
 
+});
+
+
+Route::get('/assign', function(){
+    
+    $staff = Staff::findOrFail(1);
+    
+    $photo = Photo::findOrFail(2);
+    
+    
+    $staff->photos()->save($photo);
+    
     
     
 });
 
+
+Route::get('/unassign', function(){
+    
+    $staff = Staff::findOrFail(1);
+    
+    $photo = Photo::findOrFail(3);
+    
+    foreach($staff->photos as $photo){
+        
+         $photo->where('id', 2)->update(['imageable_id'=>'0', 'imageable_type'=>'']);
+        
+    }
+    
+   
+    
+    
+    
+});
 
 
