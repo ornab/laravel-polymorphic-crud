@@ -47,7 +47,36 @@ Route::get('/read', function(){
 });
 
 
-Route::get('/update', function)
+Route::get('/update', function(){
+    
+    $staff = Staff::findOrFail(1);
+    
+    $photo = $staff->photos()->whereId(1)->first();
+    
+    $photo->path = 'exampleupdated.jpg';
+    
+    $photo->save();
+    
+    
+});
+
+
+Route::get('/delete', function(){
+    
+    
+    $staff = Staff::findOrFail(1);
+    
+    foreach($staff->photos as $photo){
+        
+        
+        $photo->whereId(1)->delete();
+        
+    }
+    
+
+    
+    
+});
 
 
 
